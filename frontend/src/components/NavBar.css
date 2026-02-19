@@ -1,0 +1,125 @@
+/* NavBar.css */
+
+/* --- Container (Fixed Header) --- */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(5, 5, 5, 0.95); /* Dunkler Background */
+  border-bottom: 1px solid rgba(0, 255, 65, 0.3); /* Dein Neon-Grün */
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+/* --- Logo --- */
+.navbar-logo {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1002; /* Über dem Menü liegen */
+}
+
+.navbar-logo .accent {
+  color: #00ff41; /* Neon Grün */
+  margin-right: 5px;
+}
+
+/* --- Hamburger Button (Mobile) --- */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002; /* WICHTIG: Muss über dem aufklappbaren Menü liegen */
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #00ff41;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animation zum X */
+.hamburger-btn.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-btn.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Navigation Menu (Mobile First: Versteckt) --- */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Vollbild auf Mobile */
+  background-color: #0a0c10;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  
+  /* Verstecken per Default */
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1001; /* Unter dem Hamburger Button */
+}
+
+/* Wenn Klasse "active" drauf ist -> Einblenden */
+.nav-menu.active {
+  transform: translateY(0);
+}
+
+.nav-link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: 'Courier New', monospace;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #00ff41;
+}
+
+/* --- Desktop Styles (ab 1008px) --- */
+@media (min-width: 1008px) {
+  .hamburger-btn {
+    display: none; /* Button weg */
+  }
+
+  .nav-menu {
+    position: static;
+    height: auto;
+    width: auto;
+    background: transparent;
+    transform: none; /* Immer sichtbar */
+    flex-direction: row;
+    gap: 2rem;
+    padding-right: 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+}
