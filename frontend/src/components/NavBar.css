@@ -9,7 +9,6 @@
   height: 70px;
   background-color: rgba(5, 5, 5, 0.95); /* Dunkler Background */
   border-bottom: 1px solid rgba(0, 255, 65, 0.3); /* Dein Neon-Grün */
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
